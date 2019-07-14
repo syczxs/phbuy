@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+{{ date }}
+<p>上架新的商品</p>
+<form action="/app/roots/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>商品名称</p>
+        <input type="text"  name="name"><br>
+        <p>商品价格</p>
+        <input type="number"  name="price"><br>
+
+        <p>商品封面</p>
+        <input type="file"  name="head_pic"><br>
+
+         <label for="type">选择列表</label>
+        <select class="form-control" name="type">
+            <option >手机</option>
+            <option >电视</option>
+            <option >笔记本</option>
+            <option >家电</option>
+            <option >耳机</option>
+            <option >配件</option>
+        </select>
+
+    <p>商品介绍</p>
+        <textarea style="width: 300px;height: 100px" name="introduce"></textarea>
+
+     <p>上架货物数量</p>
+        <input type="number"  name="number"><br>
+
+        <input type="submit" value="提交">
+        <input type="reset">
+    </form>
+
+
+    <div>
+    <h3>商品列表</h3>
+     <table border="1"  >
+<thead>
+<tr>
+    <th>图片</th>
+    <th>商品编号</th>
+    <th>商品名称</th>
+    <th>种类</th>
+    <th>商品折扣</th>
+    <th>存货数量</th>
+    <th>设置折扣</th>
+
+
+
+</tr>
+        {% for i in all_commodity %}
+             <tr>
+             <td><img src="{{ i.commodity_head_pic}}" height=100 width="100"/></td>
+             <td>{{ i.commodity_id }} </td>
+            <td> {{ i.commodity_name}}</td>
+            <td> {{ i.commodity_type }}</td>
+             <td> {{ i.commodity_discount }}</td>
+             <td> {{ i.commodity_number }}</td>
+             <td>
+                 <form action="/app/update_commodity_information/{{ i.commodity_id }}/" method="post">
+        {% csrf_token %}
+        <p>输入折扣</p>
+        <input type="number"  name="discount"><br>
+                     <p>补充货物</p>
+        <input type="number"  name="number"><br>
+        <input type="submit">
+    </form>
+             </td>
+
+
+             </tr>
+    {% endfor %}
+</table>
+</div>
+
+<h3>补充商品</h3>
+</body>
+</html>

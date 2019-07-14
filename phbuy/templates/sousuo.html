@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+ {% for i in massage %}
+        <img src="{{ i.commodity_head_pic}}" height=200 width="150"/>
+      <a href="{% url 'commodity' i.commodity_id %}" style="display: block;"> {{  i.commodity_name }}</a>
+
+    {% endfor %}
+
+</body>
+</html>

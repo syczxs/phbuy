@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{{ date }}
+    <form action="/app/register/" method="post">
+        {% csrf_token %}
+        <p>请输入用户名</p>
+        <input type="text"  name="name"><br>
+        <P>输入密码</P>
+        <input type="text"  name="password"><br>
+        <p>输入确认密码</p>
+         <input type="text"  name="password2"><br>
+        <input type="submit" value="提交">
+        <input type="reset">
+    </form>
+
+
+</body>
+</html>

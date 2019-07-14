@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="{% url 'register2'  %}" style="display: block;">点击修改个人信息</a>
+
+
+<h3>个人中心</h3>
+<p>用户头像</p> <img src="{{all_user_by_username.user_pic}}" height=100 width="100"/><br>
+<p>用户ID{{ all_user_by_username.user_id }}</p>
+<p>用户姓名{{ all_user_by_username.user_name }}</p>
+<p>支付宝账号{{ all_user_by_username.alipay }}</p>
+<p>支付密码{{ all_user_by_username.pay_number }}</p>
+<p>收获地址{{ all_user_by_username.user_address }}</p>
+
+
+
+
+<h3>我的购买记录</h3>
+ <table border="1"  >
+<thead>
+<tr>
+    <th>订单编号</th>
+    <th>用户姓名</th>
+    <th>下单时间</th>
+    <th>商品名称</th>
+    <th>订单状态</th>
+
+
+</tr>
+        {% for i in user_buy_history %}
+             <tr>
+             <td>{{ i.ID }} </td>
+            <td> {{ i.user_name}}</td>
+            <td> {{ i.buy_time }}</td>
+             <td> {{ i.commodity }}</td>
+             <td> {{ i.commodity_state }}</td>
+
+             </tr>
+    {% endfor %}
+</thead>
+ </table>
+ <h3>我的浏览记录</h3>
+<table border="1"  >
+<thead>
+<tr>
+    <th>用户id</th>
+    <th>用户姓名</th>
+    <th>浏览时间</th>
+    <th>浏览商品</th>
+
+</tr>
+        {% for i in user_look_history %}
+             <tr>
+             <td>{{ i.ID }} </td>
+            <td> {{ i.user_name}}</td>
+            <td> {{ i.look_time }}</td>
+             <td> {{ i.commodity }}</td>
+
+             </tr>
+    {% endfor %}
+</thead>
+ </table>
+
+</body>
+</html>

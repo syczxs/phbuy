@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="{{ commodity_information.commodity_head_pic}}" height=200 width="150"/>
+<p>商品名称{{ commodity_information.commodity_name }}</p>
+<p>id{{ commodity_information.commodity_id }}</p>
+<p>类别{{ commodity_information.commodity_type}}</p>
+<p>价格{{ commodity_information.commodiy_price}}</p>
+<p>介绍{{ commodity_information.commodity_introduce}}</p>
+<p>商品折扣{{ commodity_information.commodity_discount }}</p>
+<p>浏览量{{ commodity_information.commodity_look_history }}</p>
+<p>收藏量{{ commodity_information.commodity_collection_history }}</p>
+<p>购买量{{ commodity_information.commodity_buy_history }}</p>
+<p>剩余量{{ commodity_information.commodity_number }}</p>
+
+
+ <form action="/app/add_commoditys/{{ commodity_information.commodity_id }}/" method="post">
+        {% csrf_token %}
+        <h3>加入购物车</h3>
+
+        <P>添加数量</P>
+        <input type="number"  name="number"><br>
+        <input type="submit">
+        <input type="reset">
+    </form>
+
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<h3>购物车</h3>
+
+{% for i in commodity_list %}
+     <img src="{{ i.commodity_pic}}" height=200 width="150"/>
+    <p>商品名称{{ i.commodity_name }}</p>
+    <p>商品数量{{ i.commodity_number }}</p>
+    <p>商品价格{{ i.commodity_price }}</p>
+    <p>商品折扣{{ i.commodity_discount }}</p>
+    <form action="/app/add_commoditys/{{ i.commodity_id }}/" method="post">
+        {% csrf_token %}
+        <p>商品数量</p>
+        <input type="number"  value="{{ i.commodity_number }}" name="number"><br>
+
+        <input type="submit">
+    <p>总价格:{{ i.commodity_sum }}</p>
+    </form>
+
+
+{% endfor %}
+<h3>总计{{ str_sum_all }}</h3>
+
+<button><a href="{% url 'pay_all' str_sum_all %}">结算</a></button>
+</body>
+</html>

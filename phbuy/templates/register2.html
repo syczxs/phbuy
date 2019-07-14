@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{{ date }}
+<p>完善个人资料</p>
+ <form action="/app/register2/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>请输入用户名</p>
+        <input type="text"  name="name"><br>
+        <p>绑定你的支付宝账号</p>
+        <input type="text"  name="alipay"><br>
+        <p>创建你的支付密码</p>
+        <input type="text"  name="pay_number"><br>
+        <p>增添你的收获地址</p>
+         <input type="text"  name="user_address"><br>
+        <p>点击更换头像</p>
+        <input type="file"  name="pic"><br>
+        <input type="submit" value="提交">
+        <input type="reset">
+    </form>
+
+<button><a href="{% url 'index' %}">以后再说</a></button>
+</body>
+</html>
